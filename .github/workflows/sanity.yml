@@ -21,7 +21,9 @@ jobs:
       - name: Deploy Sanity Studio
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+          SANITY_STUDIO_PROJECT_ID: ${{ secrets.SANITY_STUDIO_PROJECT_ID }}
+          SANITY_STUDIO_DATASET: ${{ secrets.SANITY_STUDIO_DATASET }}
         run: |
           npm install -g @sanity/cli
-          sanity login --token $SANITY_AUTH_TOKEN
+          sanity login --non-interactive --token $SANITY_AUTH_TOKEN
           sanity deploy --non-interactive
